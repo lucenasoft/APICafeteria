@@ -6,9 +6,9 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cafeteria</groupId>
+	<groupId>com.api</groupId>
 	<artifactId>cafeteria</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cafeteria</name>
