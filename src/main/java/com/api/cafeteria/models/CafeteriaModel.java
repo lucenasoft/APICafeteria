@@ -22,14 +22,14 @@ public class CafeteriaModel implements Serializable{
     @Column(nullable = false, unique = true, length = 50)
     private String title;
 
-    @Column(nullable = false, unique = true, length = 40)
-    private Double price;
+    @Column
+    private Double price = 0.0;
 
-    @Column(nullable = false, unique = true, length = 120)
+    @Column(nullable = false, length = 120)
     private String description;
 
-    @Column(nullable = false, unique = true, length = 100)
-    private Integer amout;
+    @Column
+    private Integer amount = 00;
 
     public static long getSerialversionuid() {
         return serialVersionUID;
@@ -67,11 +67,14 @@ public class CafeteriaModel implements Serializable{
         this.description = description;
     }
 
-    public Integer getAmout() {
-        return amout;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setAmout(Integer amout) {
-        this.amout = amout;
-    }   
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    
+
 }
