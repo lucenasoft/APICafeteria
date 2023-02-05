@@ -3,6 +3,8 @@ package com.api.cafeteria.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import com.api.cafeteria.models.CafeteriaModel;
 import com.api.cafeteria.repository.CafeteriaRepository;
 
@@ -21,5 +23,9 @@ public class CafeteriaService {
 
     public boolean existsByTitle(String title) {
         return cafeteriaRepository.existsByTitle(title);
+    }
+
+    public List<CafeteriaModel> findAll() {
+        return cafeteriaRepository.findAll();
     }
 }
