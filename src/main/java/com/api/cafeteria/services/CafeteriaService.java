@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
+import java.util.Optional;
 
 import com.api.cafeteria.models.CafeteriaModel;
 import com.api.cafeteria.repository.CafeteriaRepository;
@@ -28,4 +30,9 @@ public class CafeteriaService {
     public List<CafeteriaModel> findAll() {
         return cafeteriaRepository.findAll();
     }
+
+    public Optional<CafeteriaModel> findById(UUID id) {
+        return cafeteriaRepository.findById(id);
+    }
+
 }
