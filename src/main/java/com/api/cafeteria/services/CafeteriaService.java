@@ -35,4 +35,9 @@ public class CafeteriaService {
         return cafeteriaRepository.findById(id);
     }
 
+    @Transactional
+    public void delete(CafeteriaModel cafeteriaModel) {
+        cafeteriaRepository.delete(cafeteriaModel);
+    }
+
 }

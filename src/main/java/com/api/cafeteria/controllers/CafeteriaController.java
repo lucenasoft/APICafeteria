@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,8 +52,18 @@ public class CafeteriaController {
     public ResponseEntity<Object> getById(@PathVariable(value = "id") UUID id) {
         Optional<CafeteriaModel> cafeteriaModelOptional = cafeteriaService.findById(id);
         if (!cafeteriaModelOptional.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Lanche não cadastrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Snack not registered");
         }
         return ResponseEntity.status(HttpStatus.OK).body(cafeteriaModelOptional.get());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteById(@PathVariable(value = "id") UUID id) {
+        Optional<CafeteriaModel> cafeteriaModelOptional = cafeteriaService.findById(id);
+        if (!cafeteriaModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Snack not registered");
+        }
+        cafeteriaService.delete(cafeteriaModelOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body("Snack deleted");
     }
 }
