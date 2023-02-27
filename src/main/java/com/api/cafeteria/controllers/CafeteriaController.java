@@ -22,6 +22,7 @@ import com.api.cafeteria.services.CafeteriaService;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
@@ -65,5 +66,19 @@ public class CafeteriaController {
         }
         cafeteriaService.delete(cafeteriaModelOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Snack deleted");
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateById(@PathVariable(value = "id") UUID id, @RequestBody @Valid CafeteriaDto cafeteriaDto) {
+        Optional<CafeteriaModel> cafeteriaModelOptional = cafeteriaService.findById(id);
+        if (!cafeteriaModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Snack not registered");
+        }
+        var cafeteriaModel = new CafeteriaModel();
+        BeanUtils.copyProperties(cafeteriaDto, cafeteriaModel);
+        cafeteriaModel.setId(cafeteriaModelOptional.get().getId());
+        cafeteriaService.save(cafeteriaModel);
+        return ResponseEntity.status(HttpStatus.OK).body("Snack updated");
+
     }
 }
