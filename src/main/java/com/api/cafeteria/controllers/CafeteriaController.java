@@ -36,7 +36,7 @@ public class CafeteriaController {
     @PostMapping
     public ResponseEntity<Object> saveCafeteria(@RequestBody @Valid CafeteriaDto cafeteriaDto){
         if(cafeteriaService.existsByTitle(cafeteriaDto.getTitle())){
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("Title is already using");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("This title is already in use.");
         }
         var cafeteriaModel = new CafeteriaModel();
         BeanUtils.copyProperties(cafeteriaDto, cafeteriaModel);
